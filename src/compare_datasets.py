@@ -16,10 +16,14 @@ from pathlib import Path
 
 import heart_disease_cleveland_analysis as cleveland
 import heart_disease_brfss_analysis as brfss
-from model_utils import print_results_table
+from model_utils import (
+    print_results_table,
+    plot_correlation_matrix,
+    plot_combined_metrics_comparison,
+)
 
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "outputs"
-
+DATA_DIR = Path(_file_).resolve().parent.parent / "data"
 
 def compare_risk_factor_importance():
     """
@@ -59,7 +63,26 @@ def compare_risk_factor_importance():
                 f"  {factor_label:16s} — Cleveland: #{cleveland_rank} of "
                 f"{len(cleveland_imp)}   |   BRFSS: #{brfss_rank} of {len(brfss_imp)}"
             )
+def generate_correlation_matrices():
+    print("\n" + "=" * 60)
+    print("GENERATING CORRELATION MATRICES")
+    print("=" * 60)
 
+    df1 = cleveland.load_and_clean(DATA_DIR / "heart_disease_cleveland.csv")
+    corr1 = plot_correlation_matrix(
+        df1, "target", "Heart Disease (Cleveland)",
+        OUTPUT_DIR / "cleveland_correlation_matrix.png",
+    )
+    print("\nCleveland correlation with target (top 5):")
+    print(corr1.head(5))
+
+    df2 = brfss.load_and_clean(DATA_DIR / "heart_disease_brfss.csv")
+    corr2 = plot_correlation_matrix(
+        df2, "HeartDiseaseorAttack", "Heart Disease Health Indicators (BRFSS)",
+        OUTPUT_DIR / "brfss_correlation_matrix.png",
+    )
+    print("\nBRFSS correlation with target (top 5):")
+    print(corr2.head(5))
 
 def main():
     print("Running Dataset 1: Heart Disease (Cleveland)...")
@@ -74,9 +97,12 @@ def main():
     all_results = cleveland_results + brfss_results
     combined_df = print_results_table(all_results)
     combined_df.to_csv(OUTPUT_DIR / "combined_results_summary.csv", index=False)
+    plot_combined_metrics_comparison(
+        all_results, OUTPUT_DIR / "combined_metrics_comparison.png"
+    )
 
     compare_risk_factor_importance()
-
+generate_correlation_matrices()
     print(
         "\nDone. See outputs/ for confusion matrix plots, feature "
         "importance CSVs, and results summaries to write up in "
