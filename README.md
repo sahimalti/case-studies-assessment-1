@@ -57,3 +57,34 @@ outputs/
     and evaluation outputs
 
 requirements.txt
+
+Reproducibility
+
+Install the required Python packages using:
+
+pip install -r requirements.txt
+
+The analysis scripts are located in the src/ directory and use the datasets stored in data/.
+
+Purpose
+
+The project demonstrates how machine learning can be used to generate evidence-based insights for health risk analysis while considering model performance, class imbalance, dataset differences and limitations.
+
+
+
+### Then
+
+1. Click **Commit changes...** in the top-right.
+2. Leave the commit message as something like:
+   ```text
+   Add project README
+Click Commit changes.
+
+After that, your repository will have:
+
+case-studies-assessment-1/
+│
+├── data/       ← your two datasets
+├── src/        ← your 4 Python files
+├── outputs/    ← we'll put these next
+└── README.md   ← this file
