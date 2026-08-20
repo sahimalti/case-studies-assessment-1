@@ -202,3 +202,49 @@ def print_results_table(results_list):
     )
     print(df.to_string(index=False))
     return df
+def plot_correlation_matrix(df, target_col, dataset_name, output_path, figsize=(10, 8)):
+    """
+    Generate and save a correlation heatmap for all features (including the
+    target) in a dataset. Used to compare raw univariate correlation with
+    the outcome against model-based feature importance rankings.
+    """
+    plt.figure(figsize=figsize)
+    corr = df.corr()
+    sns.heatmap(
+        corr, annot=True, fmt=".2f", cmap="coolwarm", center=0,
+        square=True, linewidths=0.5, cbar_kws={"shrink": 0.8},
+        annot_kws={"size": 7},
+    )
+    plt.title(f"Correlation Matrix \u2014 {dataset_name}")
+    plt.xticks(rotation=45, ha="right")
+    plt.tight_layout()
+    plt.savefig(output_path, dpi=150)
+    plt.close()
+    return corr[target_col].sort_values(ascending=False)
+
+
+def plot_combined_metrics_comparison(results_list, output_path):
+    """
+    Generate a grouped bar chart comparing accuracy, precision, recall, F1
+    and ROC-AUC across all model/dataset combinations in results_list.
+    """
+    metrics = ["accuracy", "precision", "recall", "f1", "roc_auc"]
+    metric_labels = ["Accuracy", "Precision", "Recall", "F1", "ROC-AUC"]
+    x = np.arange(len(metrics))
+    width = 0.2
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+    for i, r in enumerate(results_list):
+        values = [r[m] for m in metrics]
+        label = f"{r['dataset']} \u2014 {r['model'].replace('_', ' ').title()}"
+        ax.bar(x + i * width, values, width, label=label)
+
+    ax.set_xticks(x + width * (len(results_list) - 1) / 2)
+    ax.set_xticklabels(metric_labels)
+    ax.set_ylabel("Score")
+    ax.set_title("Model Comparison Across Both Datasets")
+    ax.legend(fontsize=8, loc="upper right")
+    ax.set_ylim(0, 1.0)
+    plt.tight_layout()
+    plt.savefig(output_path, dpi=150)
+    plt.close()
