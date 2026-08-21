@@ -70,9 +70,7 @@ Purpose
 
 The project demonstrates how machine learning can be used to generate evidence-based insights for health risk analysis while considering model performance, class imbalance, dataset differences and limitations.
 
-
-
-### Then
+Then
 
 1. Click **Commit changes...** in the top-right.
 2. Leave the commit message as something like:
