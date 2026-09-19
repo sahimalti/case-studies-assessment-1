@@ -1,0 +1,23 @@
+\begin{table}[h]
+\caption{Largest between-group differences computed with Fairlearn. The equalized odds difference is the larger of the recall (TPR) and FPR gaps.}
+\label{tab:gaps}
+\small\setlength\tabcolsep{4pt}
+\begin{tabular}{lllcccc}
+\toprule
+Dataset & Model & Attribute & TPR gap & FPR gap & Eq.\ odds diff. & Dem.\ parity diff.\\
+\midrule
+Cleveland & LR & Sex & 0.072 & 0.151 & 0.151 & 0.320\\
+Cleveland & LR & Age & 0.154 & 0.160 & 0.180 & 0.345\\
+Cleveland & RF & Sex & 0.034 & 0.157 & 0.157 & 0.295\\
+Cleveland & RF & Age & 0.231 & 0.247 & 0.256 & 0.407\\
+BRFSS & LR & Sex & 0.109 & 0.130 & 0.130 & 0.155\\
+BRFSS & LR & Age & 0.625 & 0.443 & 0.625 & 0.501\\
+BRFSS & LR & Income & 0.197 & 0.314 & 0.314 & 0.348\\
+BRFSS & LR & Education & 0.117 & 0.203 & 0.203 & 0.227\\
+BRFSS & RF & Sex & 0.079 & 0.100 & 0.100 & 0.125\\
+BRFSS & RF & Age & 0.588 & 0.449 & 0.588 & 0.506\\
+BRFSS & RF & Income & 0.194 & 0.315 & 0.315 & 0.348\\
+BRFSS & RF & Education & 0.125 & 0.212 & 0.212 & 0.236\\
+\bottomrule
+\end{tabular}
+\end{table}

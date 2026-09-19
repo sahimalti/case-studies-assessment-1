@@ -1,0 +1,28 @@
+\begin{table}[h]
+\caption{Fairlearn MetricFrame results by group for Logistic Regression, using out-of-fold predictions (Cleveland averaged over 10 repeats of 5-fold CV; BRFSS 5-fold CV).}
+\label{tab:fair}
+\small\setlength\tabcolsep{4pt}
+\begin{tabular}{lllrcccc}
+\toprule
+Dataset & Attribute & Group & $n$ & Base rate & Recall & FPR & Precision\\
+\midrule
+Cleveland & Sex & Female & 96 & 0.250 & 0.738 & 0.029 & 0.897\\
+ & Sex & Male & 207 & 0.551 & 0.809 & 0.181 & 0.846\\
+ & Age & $<$50 & 88 & 0.295 & 0.700 & 0.029 & 0.912\\
+ & Age & 50-59 & 125 & 0.480 & 0.788 & 0.154 & 0.826\\
+ & Age & 60+ & 90 & 0.578 & 0.854 & 0.187 & 0.863\\
+\midrule
+BRFSS & Sex & Female & 141,974 & 0.072 & 0.733 & 0.196 & 0.224\\
+ & Sex & Male & 111,706 & 0.123 & 0.842 & 0.327 & 0.264\\
+ & Age & 18-44 & 54,401 & 0.014 & 0.232 & 0.014 & 0.185\\
+ & Age & 45-59 & 76,965 & 0.057 & 0.625 & 0.135 & 0.219\\
+ & Age & 60+ & 122,314 & 0.153 & 0.858 & 0.457 & 0.253\\
+ & Income & $<$\$25k & 57,723 & 0.158 & 0.882 & 0.461 & 0.264\\
+ & Income & \$25-50k & 62,353 & 0.109 & 0.809 & 0.307 & 0.244\\
+ & Income & $\geq$\$50k & 133,604 & 0.060 & 0.685 & 0.147 & 0.229\\
+ & Education & HS or less & 76,445 & 0.129 & 0.846 & 0.373 & 0.252\\
+ & Education & Some college & 69,910 & 0.099 & 0.790 & 0.254 & 0.255\\
+ & Education & College grad & 107,325 & 0.066 & 0.729 & 0.170 & 0.232\\
+\bottomrule
+\end{tabular}
+\end{table}

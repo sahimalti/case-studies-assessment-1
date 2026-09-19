@@ -1,0 +1,23 @@
+\begin{table}[h]
+\caption{Mitigating the age disparity on BRFSS (Logistic Regression, stratified 80/20 split). ThresholdOptimizer applies group-specific thresholds to equalise recall across age groups.}
+\label{tab:mitigation}
+\small\setlength\tabcolsep{4pt}
+\begin{tabular}{lccc}
+\toprule
+ & Baseline LR & Age removed & ThresholdOptimizer\\
+\midrule
+Overall recall & 0.797 & 0.748 & 0.767\\
+Overall precision & 0.248 & 0.235 & 0.220\\
+Overall F1 & 0.378 & 0.358 & 0.341\\
+Balanced accuracy & 0.773 & 0.748 & 0.742\\
+Recall gap across age groups & 0.677 & 0.295 & 0.038\\
+FPR gap across age groups & 0.441 & 0.276 & 0.115\\
+Recall, 18-44 & 0.186 & 0.469 & 0.731\\
+Recall, 45-59 & 0.625 & 0.726 & 0.763\\
+Recall, 60+ & 0.863 & 0.764 & 0.769\\
+FPR, 18-44 & 0.017 & 0.089 & 0.231\\
+FPR, 45-59 & 0.133 & 0.216 & 0.234\\
+FPR, 60+ & 0.458 & 0.365 & 0.346\\
+\bottomrule
+\end{tabular}
+\end{table}
