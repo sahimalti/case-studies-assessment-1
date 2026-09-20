@@ -18,6 +18,7 @@ case-studies-assessment-1/
 │   ├── model_utils.py
 │   ├── task2_common.py
 │   ├── task2_cv_sampling.py
+|   ├── task2_extra.py
 │   ├── task2_fairness.py
 │   ├── task2_learning_curves.py
 │   ├── task2_make_tables.py
@@ -54,14 +55,18 @@ The extended analysis examines the reliability and fairness of the Task 1 result
 
 It includes:
 
-Repeated stratified cross-validation
-Nested cross-validation
-Repeated hold-out sampling
-Learning curves across different training set sizes
-Fairlearn group-level fairness analysis
-Recall and false-positive-rate comparisons
-Age-based fairness mitigation
-Supporting tables and figures
+-Repeated stratified cross-validation
+-Nested cross-validation
+-Repeated hold-out sampling
+-Learning curves across different training set sizes
+-Fairlearn group-level fairness analysis
+-Recall and false-positive-rate comparisons
+-Age-based fairness mitigation
+- Wilson confidence intervals for group-level recall
+- Corrected resampled t-tests for model comparison
+- Imbalance-handling strategies applied inside cross-validation folds
+- Supporting tables and figures
+
 
 The Task 2 analysis also includes corrected handling of the Cleveland dataset label and encoded missing values.
 
@@ -107,6 +112,14 @@ Reproducibility
 The repository contains the datasets, source code and generated outputs used for the analysis reported in the assessment.
 
 The Task 2 scripts are designed to run from the repository root and use the datasets in the data/ directory. The outputs in outputs/task2/ provide the results and supporting figures used in the assessment.
+
+Additional Task 2 analyses
+
+`task2_extra.py` contains the supporting analyses for:
+
+- 95% Wilson intervals for group-level recall
+- Corrected resampled t-tests comparing Logistic Regression and Random Forest
+- BRFSS imbalance strategies, including class weighting, random undersampling and SMOTE applied inside cross-validation folds
 
 Notes
 
